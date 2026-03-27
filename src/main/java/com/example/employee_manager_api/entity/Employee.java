@@ -42,5 +42,5 @@ public class Employee {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "adress_id", nullable = false)
-    private Adress adress;
+    private Address address;
 }

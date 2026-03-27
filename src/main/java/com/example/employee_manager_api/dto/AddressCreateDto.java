@@ -2,7 +2,11 @@ package com.example.employee_manager_api.dto;
 
 import jakarta.validation.constraints.NotBlank;
 
+
 public record AddressCreateDto(
+
+        @NotBlank(message = "Address is required")
+        String address,
 
         @NotBlank(message = "Street is required")
         String street,
