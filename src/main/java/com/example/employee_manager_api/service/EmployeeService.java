@@ -5,6 +5,7 @@ import com.example.employee_manager_api.dto.EmployeeCreateDto;
 import com.example.employee_manager_api.dto.EmployeeResponseDto;
 import com.example.employee_manager_api.dto.EmployeeUpdateDto;
 import com.example.employee_manager_api.entity.Employee;
+import com.example.employee_manager_api.enums.EmployeeStatus;
 import com.example.employee_manager_api.exception.BusinessException;
 import com.example.employee_manager_api.exception.ResourceNotFoundException;
 import com.example.employee_manager_api.mapper.EmployeeMapper;
@@ -59,6 +60,20 @@ public class EmployeeService {
                     return new ResourceNotFoundException("Employee not found");
                 });
         return mapper.toDto(employee);
+    }
+
+    public Page<EmployeeResponseDto> findByStatus(EmployeeStatus status, Pageable pageable) {
+        log.info("Listando funcionários por status: {}", status);
+
+        return repository.findByStatus(status, pageable)
+                .map(mapper::toDto);
+    }
+
+    public Page<EmployeeResponseDto> findByName(String name, Pageable pageable) {
+        log.info("Buscando funcionários por nome: {}", name);
+
+        return repository.findByNameContainingIgnoreCase(name, pageable)
+                .map(mapper::toDto);
     }
 
     public EmployeeResponseDto update(UUID id, EmployeeUpdateDto dto) {

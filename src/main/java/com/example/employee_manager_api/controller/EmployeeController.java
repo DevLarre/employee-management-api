@@ -3,6 +3,7 @@ package com.example.employee_manager_api.controller;
 import com.example.employee_manager_api.dto.EmployeeCreateDto;
 import com.example.employee_manager_api.dto.EmployeeResponseDto;
 import com.example.employee_manager_api.dto.EmployeeUpdateDto;
+import com.example.employee_manager_api.enums.EmployeeStatus;
 import com.example.employee_manager_api.service.EmployeeService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -54,6 +55,22 @@ public class EmployeeController {
     public ResponseEntity<Page<EmployeeResponseDto>> findAll(
             @PageableDefault(size = 10, sort = "name") Pageable pageable) {
         return ResponseEntity.ok(service.findAll(pageable));
+    }
+
+    @Operation(summary = "List employees by status")
+    @GetMapping("/status/{status}")
+    public ResponseEntity<Page<EmployeeResponseDto>> findByStatus(
+            @PathVariable EmployeeStatus status,
+            @PageableDefault(size = 10) Pageable pageable) {
+        return ResponseEntity.ok(service.findByStatus(status, pageable));
+    }
+
+    @Operation(summary = "Search employees by name")
+    @GetMapping("/search")
+    public ResponseEntity<Page<EmployeeResponseDto>> findByName(
+            @RequestParam String name,
+            @PageableDefault(size = 10) Pageable pageable) {
+        return ResponseEntity.ok(service.findByName(name, pageable));
     }
 
     @Operation(summary = "Update employee")
