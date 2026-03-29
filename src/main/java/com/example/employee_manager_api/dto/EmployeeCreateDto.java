@@ -8,29 +8,29 @@ import java.time.LocalDate;
 
 public record EmployeeCreateDto(
 
-        @NotBlank(message = "Nome é obrigatório")
-        @Size(max = 150, message = "Nome deve ter no máximo 150 caracteres")
+        @NotBlank(message = "Name is required")
+        @Size(max = 150, message = "The name must not be more than 150 characters long.")
         String name,
 
-        @NotBlank(message = "CPF é obrigatório")
-        @Size(max = 14, message = "CPF inválido")
+        @NotBlank(message = "CPF is required")
+        @Size(max = 14, message = "CPF invalid")
         String cpf,
 
-        @NotBlank(message = "Cargo é obrigatório")
-        @Size(max = 100, message = "Cargo deve ter no máximo 100 caracteres")
+        @NotBlank(message = "Position is required")
+        @Size(max = 100, message = "The job title must have a maximum of 100 characters.")
         String position,
 
-        @NotNull(message = "Salário é obrigatório")
-        @Positive(message = "Salário deve ser positivo")
+        @NotNull(message = "Salary is required")
+        @Positive(message = "Salary must be positive")
         BigDecimal salary,
 
-        @NotNull(message = "Status é obrigatório")
+        @NotNull(message = "Status is requirede")
         EmployeeStatus status,
 
-        @NotNull(message = "Data de admissão é obrigatória")
+        @NotNull(message = "Admission date is required.")
         LocalDate admissionDate,
 
-        @NotNull(message = "Endereço é obrigatório")
+        @NotNull(message = "Address is required")
         @Valid
         AddressCreateDto address
 
