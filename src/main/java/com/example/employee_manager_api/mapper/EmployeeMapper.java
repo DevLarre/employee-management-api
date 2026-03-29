@@ -38,7 +38,7 @@ public class EmployeeMapper {
 
     private Address toAddressEntity(AddressCreateDto dto) {
         return Address.builder()
-                .address(dto.address())
+                .street(dto.street())
                 .number(dto.number())
                 .neighborhood(dto.neighborhood())
                 .city(dto.city())
@@ -49,7 +49,7 @@ public class EmployeeMapper {
 
     private AddressResponseDto toAddressDto(Address entity) {
         return new AddressResponseDto(
-                entity.getAddress(),
+                entity.getStreet(),
                 entity.getNumber(),
                 entity.getNeighborhood(),
                 entity.getCity(),

@@ -19,7 +19,7 @@ public class Address {
     private UUID id;
 
     @Column(nullable = false)
-    private String address;
+    private String street;
 
     @Column(nullable = false)
     private String number;

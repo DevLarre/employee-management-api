@@ -6,9 +6,6 @@ import jakarta.validation.constraints.NotBlank;
 public record AddressCreateDto(
 
         @NotBlank(message = "Address is required")
-        String address,
-
-        @NotBlank(message = "Street is required")
         String street,
 
         @NotBlank(message = "Number is required")
@@ -24,5 +21,5 @@ public record AddressCreateDto(
         String state,
 
         @NotBlank(message = "ZipCode is required")
-        String zipCode
-) {}
+        String zipCode)
+{}
